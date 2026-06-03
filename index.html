@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="pink">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pookie facts 💅✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Righteous&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       THEME TOKENS
+    ═══════════════════════════════════════════════════════ */
+
+    /* ── Fixed semantic vars (never change per theme) ── */
+    :root {
+      --radius:    18px;
+      --radius-sm: 10px;
+      --correct:   #22c55e;  --correct-bg: rgba(34,197,94,0.12);
+      --wrong:     #f43f5e;  --wrong-bg:   rgba(244,63,94,0.12);
+      --streak:    #f97316;  --streak-bg:  rgba(249,115,22,0.12);
+
+      /* category colors — work on both light & dark */
+      --world:  #0891b2; --world-bg:  rgba(8,145,178,0.1);
+      --hist:   #d97706; --hist-bg:   rgba(217,119,6,0.1);
+      --geo:    #16a34a; --geo-bg:    rgba(22,163,74,0.1);
+      --civ:    #7c3aed; --civ-bg:    rgba(124,58,237,0.1);
+      --newscat:#e11d48;
+    }
+
+    /* ── PINK + WHITE (default) ── */
+    :root, [data-theme="pink"] {
+      --bg:      #fff5f9;
+      --bg-deep: #fdeef7;
+      --bg-card: #ffffff;
+      --surface: rgba(219,39,119,0.05);
+      --border:  rgba(219,39,119,0.14);
+      --text:    #1a0012;
+      --muted:   rgba(26,0,18,0.42);
+      --accent:  #db2777;
+      --accent2: #f472b6;
+      --accent3: #fbcfe8;
+      --a-rgb:   219,39,119;
+      --a-glow:  rgba(219,39,119,0.22);
+      --a-soft:  rgba(219,39,119,0.08);
+      --ta:      #9d174d; --tb: #db2777; --tc: #f472b6;
+      --blob-a:  #fda4c6; --blob-b: #fce7f3;
+      --blob-c:  #f9a8d4; --blob-d: #fde8f2;
+      --blob-op: 0.4;
+      --shine:   rgba(219,39,119,0.03);
+      --sw-bg:   rgba(255,255,255,0.9);
+    }
+
+    /* ── BLUE + WHITE ── */
+    [data-theme="blue"] {
+      --bg:      #f5f8ff;
+      --bg-deep: #eef3ff;
+      --bg-card: #ffffff;
+      --surface: rgba(37,99,235,0.05);
+      --border:  rgba(37,99,235,0.14);
+      --text:    #0a0e2e;
+      --muted:   rgba(10,14,46,0.42);
+      --accent:  #2563eb;
+      --accent2: #60a5fa;
+      --accent3: #bfdbfe;
+      --a-rgb:   37,99,235;
+      --a-glow:  rgba(37,99,235,0.22);
+      --a-soft:  rgba(37,99,235,0.08);
+      --ta:      #1e3a8a; --tb: #2563eb; --tc: #60a5fa;
+      --blob-a:  #93c5fd; --blob-b: #dbeafe;
+      --blob-c:  #bfdbfe; --blob-d: #eff6ff;
+      --blob-op: 0.42;
+      --shine:   rgba(37,99,235,0.03);
+      --sw-bg:   rgba(255,255,255,0.9);
+    }
+
+    /* ── BLACK + GOLD ── */
+    [data-theme="black"] {
+      --bg:      #080806;
+      --bg-deep: #100e00;
+      --bg-card: #141200;
+      --surface: rgba(245,158,11,0.06);
+      --border:  rgba(245,158,11,0.16);
+      --text:    #fef9e7;
+      --muted:   rgba(254,249,231,0.42);
+      --accent:  #f59e0b;
+      --accent2: #fbbf24;
+      --accent3: #fde68a;
+      --a-rgb:   245,158,11;
+      --a-glow:  rgba(245,158,11,0.26);
+      --a-soft:  rgba(245,158,11,0.1);
+      --ta:      #fbbf24; --tb: #f59e0b; --tc: #fde68a;
+      --blob-a:  #f59e0b; --blob-b: #92400e;
+      --blob-c:  #fbbf24; --blob-d: #78350f;
+      --blob-op: 0.18;
+      --shine:   rgba(255,255,255,0.025);
+      --sw-bg:   rgba(20,18,0,0.9);
+    }
+
+    /* ── YELLOW + WHITE ── */
+    [data-theme="yellow"] {
+      --bg:      #fffdf0;
+      --bg-deep: #fffbe0;
+      --bg-card: #ffffff;
+      --surface: rgba(202,138,4,0.06);
+      --border:  rgba(202,138,4,0.16);
+      --text:    #1c1000;
+      --muted:   rgba(28,16,0,0.42);
+      --accent:  #b45309;
+      --accent2: #d97706;
+      --accent3: #fde68a;
+      --a-rgb:   180,83,9;
+      --a-glow:  rgba(180,83,9,0.22);
+      --a-soft:  rgba(180,83,9,0.08);
+      --ta:      #78350f; --tb: #b45309; --tc: #d97706;
+      --blob-a:  #fde68a; --blob-b: #fef9c3;
+      --blob-c:  #fcd34d; --blob-d: #fef3c7;
+      --blob-op: 0.48;
+      --shine:   rgba(180,83,9,0.03);
+      --sw-bg:   rgba(255,255,255,0.9);
+    }
+
+    /* ═══════════════════════════════════════
+       RESET + BASE
+    ═══════════════════════════════════════ */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: background-color 0.45s ease, color 0.35s ease;
+    }
+
+    /* only show custom cursor on pointer devices */
+    @media (hover: hover) { body { cursor: none; } }
+    @media (hover: none)  { #cursor-dot, #cursor-glow { display: none; } }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(var(--accent), var(--accent2));
+      border-radius: 3px;
+    }
+
+    /* ── smooth color transitions on key elements ── */
+    .fact-card, .quiz-box, .featured-card, .news-card,
+    .cat-btn, .theme-sw, header, .quiz-opt, .icon-btn,
+    .stat-chip, .btn-secondary, .achievement, .facts-count {
+      transition:
+        background-color 0.4s ease,
+        border-color 0.4s ease,
+        color 0.35s ease,
+        box-shadow 0.4s ease,
+        transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    /* ═══════════════════════════════════════
+       THEME SWITCHER (fixed pill)
+    ═══════════════════════════════════════ */
+    .theme-sw {
+      position: fixed;
+      top: 1rem; right: 1rem;
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--sw-bg);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.45rem 0.9rem;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+    .sw-label {
+      font-size: 0.82rem;
+      opacity: 0.6;
+      user-select: none;
+    }
+    .sw-dot {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      border: 2.5px solid transparent;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      flex-shrink: 0;
+    }
+    .sw-dot[data-theme="pink"]   { background: #db2777; }
+    .sw-dot[data-theme="blue"]   { background: #2563eb; }
+    .sw-dot[data-theme="black"]  {
+      background: conic-gradient(#0a0806 0% 50%, #f59e0b 50% 100%);
+    }
+    .sw-dot[data-theme="yellow"] { background: #d97706; }
+    .sw-dot:hover  { transform: scale(1.25); }
+    .sw-dot.active {
+      border-color: var(--text);
+      transform: scale(1.15);
+      box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent);
+    }
+
+    /* ═══════════════════════════════════════
+       CURSOR
+    ═══════════════════════════════════════ */
+    /* ── cursor dot (instant follow) ── */
+    #cur-dot {
+      position: fixed;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(var(--a-rgb),0.7), 0 0 16px rgba(var(--a-rgb),0.35);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: width 0.2s, height 0.2s, background-color 0.35s, box-shadow 0.35s, transform 0.15s;
+    }
+
+    /* ── cursor ring (lagged, wobbly) ── */
+    #cur-ring {
+      position: fixed;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%,-50%);
+      opacity: 0.75;
+      animation: ringWobble 4s ease-in-out infinite;
+      transition: width 0.3s, height 0.3s, border-color 0.35s,
+                  border-width 0.25s, background-color 0.25s, opacity 0.25s;
+    }
+    @keyframes ringWobble {
+      0%,100% { border-radius: 50%; }
+      16%     { border-radius: 46% 54% 60% 40% / 52% 48% 52% 48%; }
+      33%     { border-radius: 58% 42% 38% 62% / 44% 56% 44% 56%; }
+      50%     { border-radius: 42% 58% 56% 44% / 60% 40% 60% 40%; }
+      66%     { border-radius: 54% 46% 44% 56% / 40% 60% 56% 44%; }
+      83%     { border-radius: 48% 52% 62% 38% / 56% 44% 40% 60%; }
+    }
+
+    /* ── hover state ── */
+    body.cur-hover #cur-dot {
+      width: 5px; height: 5px;
+      transform: translate(-50%,-50%) scale(0.8);
+    }
+    body.cur-hover #cur-ring {
+      width: 48px; height: 48px;
+      opacity: 1;
+      background: rgba(var(--a-rgb),0.08);
+      border-width: 2.5px;
+    }
+
+    /* ── click burst ── */
+    body.cur-click #cur-ring {
+      width: 60px; height: 60px;
+      opacity: 0;
+      transition: all 0.28s ease;
+    }
+    body.cur-click #cur-dot {
+      transform: translate(-50%,-50%) scale(0.5);
+    }
+
+    /* ── per-theme cursor ring personality ── */
+    [data-theme="pink"] #cur-ring {
+      animation: ringWobble 4s ease-in-out infinite;  /* soft organic blobs */
+    }
+    [data-theme="blue"] #cur-ring {
+      animation: ringWobble 7s ease-in-out infinite;  /* slower, precise */
+      border-style: dashed;
+    }
+    [data-theme="black"] #cur-ring {
+      animation: ringSharp 2.2s ease-in-out infinite; /* angular, intense */
+    }
+    [data-theme="yellow"] #cur-ring {
+      animation: ringBounce 1.4s ease-in-out infinite; /* bouncy and happy */
+    }
+
+    @keyframes ringSharp {
+      0%,100% { border-radius: 50%; }
+      25%     { border-radius: 22% 78% 72% 28% / 60% 40% 60% 40%; }
+      50%     { border-radius: 68% 32% 28% 72% / 38% 62% 38% 62%; }
+      75%     { border-radius: 32% 68% 72% 28% / 62% 38% 62% 38%; }
+    }
+    @keyframes ringBounce {
+      0%,100% { transform: translate(-50%,-50%) scale(1);    border-radius: 50%; }
+      30%     { transform: translate(-50%,-50%) scale(1.12); border-radius: 44% 56% 56% 44% / 50% 50%; }
+      60%     { transform: translate(-50%,-50%) scale(0.92); border-radius: 56% 44% 44% 56% / 50% 50%; }
+    }
+
+    /* ── ambient glow (follows slowly) ── */
+    #cur-glow {
+      position: fixed;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--a-soft) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      transform: translate(-50%,-50%);
+      transition: background 0.45s ease;
+    }
+
+    /* ── sparkle trail particles ── */
+    .cur-spark {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9997;
+      user-select: none;
+      transform: translate(-50%,-50%);
+      line-height: 1;
+      animation: sparkFloat var(--sd) ease-out forwards;
+    }
+    @keyframes sparkFloat {
+      0%   { opacity: 0.95; transform: translate(-50%,-50%) scale(1) rotate(0deg); }
+      100% { opacity: 0;    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0.1) rotate(var(--dr)); }
+    }
+
+    /* ═══════════════════════════════════════
+       AURORA BACKGROUND
+    ═══════════════════════════════════════ */
+    .aurora { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: var(--blob-op);
+      will-change: transform;
+      transition: background-color 0.6s ease;
+    }
+    .blob-1 {
+      width: 600px; height: 600px;
+      background: var(--blob-a);
+      top: -200px; left: -150px;
+      animation: bd1 18s ease-in-out infinite alternate;
+    }
+    .blob-2 {
+      width: 500px; height: 500px;
+      background: var(--blob-b);
+      top: 30%; right: -150px;
+      animation: bd2 22s ease-in-out infinite alternate;
+    }
+    .blob-3 {
+      width: 450px; height: 450px;
+      background: var(--blob-c);
+      bottom: -100px; left: 30%;
+      animation: bd3 16s ease-in-out infinite alternate;
+    }
+    .blob-4 {
+      width: 350px; height: 350px;
+      background: var(--blob-d);
+      top: 60%; left: 10%;
+      animation: bd4 25s ease-in-out infinite alternate;
+    }
+    @keyframes bd1 { from{transform:translate(0,0)scale(1)}   to{transform:translate(80px,60px)scale(1.15)}  }
+    @keyframes bd2 { from{transform:translate(0,0)scale(1.05)} to{transform:translate(-60px,80px)scale(0.9)} }
+    @keyframes bd3 { from{transform:translate(0,0)scale(0.95)} to{transform:translate(50px,-70px)scale(1.1)} }
+    @keyframes bd4 { from{transform:translate(0,0)}            to{transform:translate(90px,-50px)scale(1.2)} }
+
+    .noise {
+      position: fixed; inset: 0; z-index: 2; pointer-events: none; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    /* ═══════════════════════════════════════
+       PARTICLES
+    ═══════════════════════════════════════ */
+    #particles { position: fixed; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; }
+    .particle {
+      position: absolute;
+      opacity: 0;
+      animation: pFloat linear infinite;
+      user-select: none;
+    }
+    @keyframes pFloat {
+      0%   { opacity: 0; transform: translateY(105vh) rotate(0deg) scale(0.5); }
+      8%   { opacity: 0.1; }
+      92%  { opacity: 0.1; }
+      100% { opacity: 0; transform: translateY(-80px) rotate(540deg) scale(1.2); }
+    }
+
+    #confetti-canvas { position: fixed; inset: 0; z-index: 9998; pointer-events: none; }
+
+    /* ═══════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════ */
+    header {
+      position: relative; z-index: 10;
+      text-align: center;
+      padding: 4.5rem 1.5rem 2.5rem;
+    }
+    header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 55% at 50% 0%, var(--a-glow), transparent 70%);
+      pointer-events: none;
+      transition: background 0.45s ease;
+    }
+    .header-emojis { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .h-emoji {
+      position: absolute; animation: floatBob ease-in-out infinite;
+    }
+    @keyframes floatBob {
+      0%,100% { transform: translateY(0) rotate(-5deg); }
+      50%      { transform: translateY(-12px) rotate(5deg); }
+    }
+
+    .site-title {
+      font-family: 'Righteous', cursive;
+      font-size: clamp(3rem, 10vw, 6rem);
+      line-height: 1;
+      background: linear-gradient(130deg, var(--ta) 0%, var(--tb) 45%, var(--tc) 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 40px rgba(var(--a-rgb),0.45));
+      animation: titlePulse 4s ease-in-out infinite;
+      transition: filter 0.45s ease;
+    }
+    @keyframes titlePulse {
+      0%,100% { filter: drop-shadow(0 0 35px rgba(var(--a-rgb),0.4)); }
+      50%      { filter: drop-shadow(0 0 60px rgba(var(--a-rgb),0.7)); }
+    }
+
+    .tagline { margin-top: 0.75rem; font-size: clamp(0.85rem,2vw,1rem); color: var(--muted); letter-spacing: 0.06em; }
+
+    .header-stats { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-top: 1.5rem; }
+    .stat-chip {
+      display: flex; align-items: center; gap: 0.4rem;
+      padding: 0.35rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.8rem; font-weight: 600; color: var(--muted);
+      backdrop-filter: blur(10px);
+    }
+    .stat-chip:hover { border-color: var(--accent); color: var(--text); }
+
+    .xp-wrap { display: flex; align-items: center; gap: 0.75rem; max-width: 420px; margin: 1.25rem auto 0; }
+    .xp-label { font-size: 0.78rem; font-weight: 700; color: var(--accent2); white-space: nowrap; font-family: 'JetBrains Mono',monospace; transition: color 0.4s ease; }
+    .xp-track { flex: 1; height: 6px; background: var(--surface); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+    .xp-fill {
+      height: 100%; width: 0%;
+      background: linear-gradient(90deg, var(--accent2), var(--accent), var(--accent3));
+      border-radius: 3px;
+      transition: width 0.6s cubic-bezier(0.34,1.56,0.64,1), background 0.45s ease;
+      box-shadow: 0 0 8px rgba(var(--a-rgb),0.5);
+    }
+    .xp-val { font-size: 0.75rem; font-family: 'JetBrains Mono',monospace; color: var(--muted); white-space: nowrap; }
+
+    /* ═══════════════════════════════════════
+       TICKER
+    ═══════════════════════════════════════ */
+    .ticker-wrap {
+      position: relative; z-index: 10;
+      overflow: hidden;
+      padding: 0.6rem 0;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3), var(--accent2), var(--accent));
+      background-size: 400% 100%;
+      animation: gradShift 6s linear infinite;
+      transition: background 0.45s ease;
+    }
+    @keyframes gradShift { 0%{background-position:0% 50%} 100%{background-position:100% 50%} }
+    .ticker-track { display: flex; width: max-content; animation: tickerScroll 70s linear infinite; }
+    .ticker-track:hover { animation-play-state: paused; }
+    @keyframes tickerScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .ticker-item { white-space: nowrap; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.07em; color: #fff; padding: 0 2rem; text-shadow: 0 1px 3px rgba(0,0,0,0.25); }
+
+    /* ═══════════════════════════════════════
+       MAIN
+    ═══════════════════════════════════════ */
+    main { position: relative; z-index: 10; max-width: 1240px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+
+    /* ═══════════════════════════════════════
+       CATEGORY PILLS
+    ═══════════════════════════════════════ */
+    .cats-wrap { position: relative; margin-bottom: 2.5rem; }
+    .cats-wrap::before, .cats-wrap::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 50px; z-index: 5; pointer-events: none;
+    }
+    .cats-wrap::before { left: 0;  background: linear-gradient(90deg, var(--bg), transparent); }
+    .cats-wrap::after  { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+    .cats { display: flex; gap: 0.6rem; overflow-x: auto; scrollbar-width: none; padding: 0.5rem 0.25rem; }
+    .cats::-webkit-scrollbar { display: none; }
+    @media (min-width: 680px) { .cats { justify-content: center; flex-wrap: wrap; } }
+
+    .cat-btn {
+      display: flex; align-items: center; gap: 0.4rem;
+      padding: 0.55rem 1.25rem;
+      border-radius: 100px;
+      border: 1.5px solid color-mix(in srgb, var(--cc) 40%, transparent);
+      background: var(--surface);
+      color: var(--muted);
+      font-family: 'Space Grotesk',sans-serif;
+      font-weight: 600; font-size: 0.85rem;
+      cursor: pointer; white-space: nowrap;
+      backdrop-filter: blur(8px);
+    }
+    .cat-btn:hover { color: var(--text); transform: translateY(-2px); border-color: var(--cc); }
+    .cat-btn.active {
+      background: var(--cc); color: #fff;
+      border-color: var(--cc);
+      box-shadow: 0 0 22px color-mix(in srgb, var(--cc) 50%, transparent), 0 4px 15px rgba(0,0,0,0.15);
+      transform: translateY(-2px);
+    }
+    /* for very light colors (lime/yellow), use dark text */
+    .cat-btn[data-cat="geography"].active { color: #fff; }
+
+    .cat-btn[data-cat="all"]       { --cc: var(--accent); }
+    .cat-btn[data-cat="world"]     { --cc: var(--world); }
+    .cat-btn[data-cat="history"]   { --cc: var(--hist); }
+    .cat-btn[data-cat="geography"] { --cc: var(--geo); }
+    .cat-btn[data-cat="civics"]    { --cc: var(--civ); }
+    .cat-btn[data-cat="news"]      { --cc: var(--newscat); }
+
+    /* ═══════════════════════════════════════
+       SECTION TITLES
+    ═══════════════════════════════════════ */
+    .section-title {
+      font-family: 'Righteous',cursive;
+      font-size: clamp(1.3rem,3vw,1.6rem);
+      background: linear-gradient(90deg, var(--ta), var(--tb), var(--tc));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: background 0.45s ease;
+    }
+
+    /* ═══════════════════════════════════════
+       FEATURED CARD
+    ═══════════════════════════════════════ */
+    .featured-section { margin-bottom: 2rem; }
+    .featured-glow-wrap {
+      position: relative; border-radius: 24px; padding: 1.5px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3), var(--accent2), var(--accent));
+      background-size: 400% 400%;
+      animation: borderRot 5s linear infinite;
+      transition: background 0.45s ease;
+    }
+    @keyframes borderRot { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    .featured-card {
+      background: var(--bg-deep);
+      border-radius: 23px;
+      padding: clamp(1.5rem,4vw,2.5rem);
+      position: relative; overflow: hidden;
+      min-height: 220px;
+    }
+    .featured-card::before {
+      content: ''; position: absolute; top: -80px; right: -80px;
+      width: 250px; height: 250px;
+      background: radial-gradient(circle, var(--a-soft), transparent 70%);
+      pointer-events: none;
+    }
+    .feat-top { display: flex; align-items: flex-start; gap: 1.25rem; }
+    .feat-badge {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: #fff; padding: 0.25rem 0.9rem; border-radius: 100px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 0.75rem; width: fit-content;
+      transition: background 0.45s ease;
+    }
+    .feat-emoji-wrap {
+      font-size: 3.5rem; line-height: 1;
+      animation: emojiWobble 2.8s ease-in-out infinite;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 16px rgba(var(--a-rgb),0.3));
+    }
+    @keyframes emojiWobble { 0%,100%{transform:rotate(-8deg)scale(1)} 50%{transform:rotate(8deg)scale(1.12)} }
+    .feat-text { font-size: clamp(0.95rem,2vw,1.2rem); line-height: 1.8; font-weight: 500; color: var(--text); }
+    .feat-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+    .feat-cat-tag { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.15em; }
+    .feat-actions { display: flex; gap: 0.6rem; margin-left: auto; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; border: none;
+      padding: 0.65rem 1.5rem; border-radius: 100px;
+      font-family: 'Space Grotesk',sans-serif; font-size: 0.88rem; font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(var(--a-rgb),0.3);
+      position: relative; overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s, background 0.45s ease;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-primary:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 30px rgba(var(--a-rgb),0.45); }
+
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--surface); color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.65rem 1.2rem; border-radius: 100px;
+      font-family: 'Space Grotesk',sans-serif; font-size: 0.88rem; font-weight: 600;
+      cursor: pointer; backdrop-filter: blur(8px);
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* ═══════════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════════ */
+    .quiz-section { margin-bottom: 3rem; }
+    .quiz-box {
+      background: var(--a-soft);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: clamp(1.5rem,4vw,2.5rem);
+      backdrop-filter: blur(12px);
+      position: relative; overflow: hidden;
+    }
+    .quiz-box::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.04), transparent);
+      pointer-events: none;
+    }
+    .quiz-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem; }
+    .streak-badge {
+      display: flex; align-items: center; gap: 0.35rem;
+      padding: 0.3rem 0.9rem;
+      background: var(--streak-bg); border: 1px solid rgba(var(--streak-rgb,249,115,22),0.3);
+      border-radius: 100px; font-size: 0.8rem; font-weight: 700; color: var(--streak);
+      font-family: 'JetBrains Mono',monospace;
+    }
+    .streak-badge.hot { background: rgba(249,115,22,0.22); box-shadow: 0 0 16px rgba(249,115,22,0.35); animation: sPulse 1s ease-in-out infinite; }
+    @keyframes sPulse { 0%,100%{box-shadow:0 0 12px rgba(249,115,22,0.3)} 50%{box-shadow:0 0 26px rgba(249,115,22,0.6)} }
+
+    .quiz-progress-dots { display: flex; gap: 0.4rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .q-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all 0.3s; }
+    .q-dot.done    { background: var(--correct); box-shadow: 0 0 5px var(--correct); }
+    .q-dot.current { background: var(--accent2); box-shadow: 0 0 5px var(--accent2); transform: scale(1.35); }
+
+    .quiz-q { font-size: clamp(1rem,2.5vw,1.15rem); font-weight: 600; line-height: 1.65; margin-bottom: 1.5rem; color: var(--text); }
+    .quiz-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    @media (max-width: 560px) { .quiz-opts { grid-template-columns: 1fr; } }
+
+    .quiz-opt {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.9rem 1.1rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-card);
+      color: var(--text);
+      font-family: 'Space Grotesk',sans-serif; font-size: 0.9rem;
+      cursor: pointer; text-align: left;
+      backdrop-filter: blur(8px);
+    }
+    .quiz-opt:hover:not(:disabled) { border-color: var(--accent2); background: var(--a-soft); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(var(--a-rgb),0.15); }
+    .opt-letter {
+      display: flex; align-items: center; justify-content: center;
+      width: 26px; height: 26px; border-radius: 7px;
+      background: var(--surface); font-size: 0.75rem; font-weight: 700;
+      font-family: 'JetBrains Mono',monospace; flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+    }
+    .quiz-opt:hover:not(:disabled) .opt-letter { background: var(--accent2); color: #fff; }
+    .quiz-opt.correct { border-color: var(--correct); background: var(--correct-bg); color: var(--correct); }
+    .quiz-opt.correct .opt-letter { background: var(--correct); color: #fff; }
+    .quiz-opt.wrong   { border-color: var(--wrong);   background: var(--wrong-bg);   color: var(--wrong); }
+    .quiz-opt.wrong .opt-letter   { background: var(--wrong);   color: #fff; }
+
+    .quiz-result { margin-top: 1.1rem; font-size: 0.92rem; font-weight: 600; line-height: 1.6; min-height: 1.4rem; animation: rSlide 0.3s ease; }
+    @keyframes rSlide { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+
+    .quiz-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 1.25rem; flex-wrap: wrap; gap: 0.75rem; }
+    .quiz-score-display { font-family: 'JetBrains Mono',monospace; font-size: 0.82rem; color: var(--muted); }
+    .quiz-score-display span { color: var(--correct); font-weight: 700; }
+
+    /* ═══════════════════════════════════════
+       FACTS GRID
+    ═══════════════════════════════════════ */
+    .facts-section { margin-bottom: 3rem; }
+    .facts-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem; }
+    .facts-count {
+      font-family: 'JetBrains Mono',monospace; font-size: 0.8rem; color: var(--muted);
+      padding: 0.25rem 0.8rem; background: var(--surface); border: 1px solid var(--border); border-radius: 100px;
+    }
+
+    .facts-grid { columns: 3; column-gap: 1.1rem; padding-top: 16px; }
+    @media (max-width: 960px) { .facts-grid { columns: 2; } }
+    @media (max-width: 520px) { .facts-grid { columns: 1; } }
+
+    .fact-card {
+      break-inside: avoid; margin-bottom: 1.1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      position: relative; overflow: hidden; display: block;
+      backdrop-filter: blur(10px);
+    }
+    .fact-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .fact-card[data-cat="world"]::before     { background: var(--world); }
+    .fact-card[data-cat="history"]::before   { background: var(--hist); }
+    .fact-card[data-cat="geography"]::before { background: var(--geo); }
+    .fact-card[data-cat="civics"]::before    { background: var(--civ); }
+
+    .fact-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--shine), transparent 60%);
+      pointer-events: none;
+    }
+    .fact-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      z-index: 10;
+      border-color: rgba(var(--a-rgb),0.35);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12), 0 0 0 1px rgba(var(--a-rgb),0.15);
+    }
+
+    .fc-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.75rem; }
+    .fc-emoji { font-size: 2rem; line-height: 1; }
+    .fc-new-badge { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; color: #fff; background: var(--correct); padding: 0.15rem 0.5rem; border-radius: 100px; }
+    .fc-text { font-size: 0.9rem; line-height: 1.7; color: var(--text); margin-bottom: 1rem; }
+    .fc-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+    .fc-tag { display: inline-block; padding: 0.2rem 0.65rem; border-radius: 100px; font-size: 0.67rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+    .tag-world     { background: var(--world-bg);  color: var(--world); }
+    .tag-history   { background: var(--hist-bg);   color: var(--hist); }
+    .tag-geography { background: var(--geo-bg);    color: var(--geo); }
+    .tag-civics    { background: var(--civ-bg);    color: var(--civ); }
+    .fc-actions { display: flex; align-items: center; gap: 0.4rem; }
+    .icon-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 8px;
+      border: 1px solid var(--border); background: var(--surface);
+      color: var(--muted); font-size: 0.85rem; cursor: pointer;
+    }
+    .icon-btn:hover  { border-color: var(--accent); color: var(--accent); transform: scale(1.1); }
+    .icon-btn.liked  { border-color: var(--wrong); color: var(--wrong); animation: heartPop 0.3s ease; }
+    @keyframes heartPop { 0%{transform:scale(1)} 50%{transform:scale(1.4)} 100%{transform:scale(1)} }
+    .like-count { font-size: 0.7rem; color: var(--muted); font-family: 'JetBrains Mono',monospace; }
+
+    /* ═══════════════════════════════════════
+       COPY TOAST
+    ═══════════════════════════════════════ */
+    .copy-toast {
+      position: fixed; bottom: 2rem; left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--correct-bg); border: 1px solid var(--correct); color: var(--correct);
+      padding: 0.5rem 1.25rem; border-radius: 100px;
+      font-size: 0.85rem; font-weight: 700; z-index: 9999;
+      opacity: 0; transition: all 0.3s; pointer-events: none;
+    }
+    .copy-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ═══════════════════════════════════════
+       NEWS
+    ═══════════════════════════════════════ */
+    .news-section { margin-bottom: 3rem; }
+    .news-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem; }
+    .live-badge {
+      display: flex; align-items: center; gap: 0.4rem;
+      padding: 0.3rem 0.8rem; background: var(--a-soft); border: 1px solid var(--border);
+      border-radius: 100px; font-size: 0.72rem; font-weight: 700; color: var(--accent);
+    }
+    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: livePulse 1s ease-in-out infinite; }
+    @keyframes livePulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px,1fr)); gap: 1rem; }
+    @media (max-width: 520px) { .news-grid { grid-template-columns: 1fr; } }
+
+    .news-card {
+      display: block; text-decoration: none; color: var(--text);
+      background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+      border-radius: var(--radius); padding: 1.25rem;
+      backdrop-filter: blur(10px); position: relative; overflow: hidden;
+    }
+    .news-card:hover { border-left-color: var(--accent2); transform: translateX(4px); box-shadow: -4px 0 25px rgba(var(--a-rgb),0.12), 0 8px 24px rgba(0,0,0,0.08); }
+    .news-headline { font-weight: 600; font-size: 0.92rem; line-height: 1.5; margin-bottom: 0.6rem; }
+    .news-vibe { font-size: 0.77rem; color: var(--accent); font-weight: 600; margin-bottom: 0.5rem; }
+    .news-meta { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    .news-score {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      padding: 0.15rem 0.6rem; border-radius: 100px;
+      font-size: 0.7rem; font-weight: 700; font-family: 'JetBrains Mono',monospace;
+      background: var(--streak-bg); color: var(--streak);
+    }
+    .news-score.trending { background: var(--a-soft); color: var(--accent); box-shadow: 0 0 8px rgba(var(--a-rgb),0.2); }
+    .news-time, .news-comments { font-size: 0.7rem; color: var(--muted); }
+
+    .loading-msg { text-align: center; padding: 3rem; color: var(--muted); font-size: 0.95rem; animation: breathe 1.8s ease-in-out infinite; }
+    @keyframes breathe { 0%,100%{opacity:0.4} 50%{opacity:0.9} }
+
+    /* ═══════════════════════════════════════
+       WAVE DIVIDER
+    ═══════════════════════════════════════ */
+    .wave-divider { position: relative; height: 60px; overflow: hidden; margin: 1rem 0; }
+    .wave-divider svg { position: absolute; bottom: 0; width: 100%; height: 100%; }
+
+    /* ═══════════════════════════════════════
+       ACHIEVEMENT POPUP
+    ═══════════════════════════════════════ */
+    .achievement {
+      position: fixed; top: 5rem; right: 1rem;
+      background: var(--bg-deep); border: 1px solid var(--accent2);
+      border-radius: 16px; padding: 1rem 1.25rem; z-index: 9999;
+      transform: translateX(calc(100% + 2rem));
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), background 0.45s ease, border-color 0.45s ease;
+      max-width: 260px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 0 25px rgba(var(--a-rgb),0.15);
+    }
+    .achievement.show { transform: translateX(0); }
+    .ach-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); margin-bottom: 0.3rem; }
+    .ach-body  { font-size: 0.9rem; font-weight: 600; line-height: 1.4; color: var(--text); }
+
+    /* ═══════════════════════════════════════
+       SCROLL ANIMATIONS
+       Initial hidden states only — JS drives the
+       actual reveal so nothing fights the cascade.
+    ═══════════════════════════════════════ */
+    .sa          { opacity: 0; }
+    .sa-up       { transform: translateY(48px); }
+    .sa-left     { transform: translateX(-56px); }
+    .sa-right    { transform: translateX(56px); }
+    .sa-scale    { transform: scale(0.88) translateY(24px); }
+    .fact-card.sa{ opacity: 0; transform: translateY(36px); }
+    .news-card.sa{ opacity: 0; transform: translateX(40px); }
+
+    /* after JS reveal: let CSS class styles take over cleanly */
+    .sa-done     { opacity: 1 !important; transform: none !important; }
+
+    /* ═══════════════════════════════════════
+       MISC
+    ═══════════════════════════════════════ */
+    .hidden { display: none !important; }
+
+    footer {
+      position: relative; z-index: 10; text-align: center;
+      padding: 2rem 1rem 3rem; color: var(--muted); font-size: 0.82rem; line-height: 2;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<!-- theme switcher -->
+<div class="theme-sw" id="theme-sw">
+  <span class="sw-label">🎨</span>
+  <button class="sw-dot" data-theme="pink"   title="pink & white"></button>
+  <button class="sw-dot" data-theme="blue"   title="blue & white"></button>
+  <button class="sw-dot" data-theme="black"  title="black & gold"></button>
+  <button class="sw-dot" data-theme="yellow" title="yellow & white"></button>
+</div>
+
+<!-- cursor -->
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+<div id="cur-glow"></div>
+
+<!-- confetti -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- aurora -->
+<div class="aurora">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+</div>
+<div class="noise"></div>
+
+<!-- particles -->
+<div id="particles"></div>
+
+<!-- achievement -->
+<div class="achievement" id="achievement">
+  <div class="ach-title">✨ achievement unlocked</div>
+  <div class="ach-body" id="ach-body"></div>
+</div>
+
+<!-- copy toast -->
+<div class="copy-toast" id="copy-toast">copied bestie ✅</div>
+
+<header>
+  <div class="header-emojis" id="header-emojis"></div>
+  <h1 class="site-title">✨ pookie facts ✨</h1>
+  <p class="tagline">no cap, the most slay knowledge drop you'll get today 💅</p>
+  <div class="header-stats">
+    <div class="stat-chip">📚 40+ facts</div>
+    <div class="stat-chip">🧠 12 quiz qs</div>
+    <div class="stat-chip">📰 live news</div>
+    <div class="stat-chip">💯 100% brainrot</div>
+  </div>
+  <div class="xp-wrap">
+    <div class="xp-label">🧠 brain xp</div>
+    <div class="xp-track"><div class="xp-fill" id="xp-fill"></div></div>
+    <div class="xp-val" id="xp-val">0 xp</div>
+  </div>
+</header>
+
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track"></div>
+</div>
+
+<main>
+  <div class="cats-wrap">
+    <div class="cats" id="cats">
+      <button class="cat-btn active" data-cat="all">💫 all the vibes</button>
+      <button class="cat-btn" data-cat="world">🌍 world tea</button>
+      <button class="cat-btn" data-cat="history">📜 history slay</button>
+      <button class="cat-btn" data-cat="geography">🗺️ geography era</button>
+      <button class="cat-btn" data-cat="civics">🏛️ civics moment</button>
+      <button class="cat-btn" data-cat="news">📰 latest tea</button>
+    </div>
+  </div>
+
+  <div class="featured-section sa sa-scale" id="featured-section">
+    <div class="featured-glow-wrap">
+      <div class="featured-card">
+        <div class="feat-badge">✨ fact of the moment bestie</div>
+        <div class="feat-top">
+          <div class="feat-emoji-wrap" id="feat-emoji">🌟</div>
+          <div>
+            <p class="feat-text" id="feat-text">loading the most bussin fact rn...</p>
+          </div>
+        </div>
+        <div class="feat-footer">
+          <span class="feat-cat-tag" id="feat-cat"></span>
+          <div class="feat-actions">
+            <button class="btn-secondary" onclick="shareFeat()">share 🔗</button>
+            <button class="btn-primary" onclick="randomFeatured()">gimme another 🎲</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="rgba(128,128,128,0.06)"/>
+    </svg>
+  </div>
+
+  <div class="quiz-section sa sa-left" id="quiz-section">
+    <div class="quiz-box">
+      <div class="quiz-header">
+        <div class="section-title">🧠 big brain quiz moment</div>
+        <div class="streak-badge" id="streak-badge">🔥 0 streak</div>
+      </div>
+      <div class="quiz-progress-dots" id="q-dots"></div>
+      <p class="quiz-q" id="quiz-q">loading your quiz bestie...</p>
+      <div class="quiz-opts" id="quiz-opts"></div>
+      <p class="quiz-result" id="quiz-result"></p>
+      <div class="quiz-footer">
+        <div class="quiz-score-display">score: <span id="q-score">0</span>/<span id="q-total">0</span></div>
+        <button class="btn-primary hidden" id="next-btn" onclick="nextQuiz()">next question 💅</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C360,0 720,60 1080,30 C1260,15 1380,45 1440,30 L1440,60 L0,60 Z" fill="rgba(128,128,128,0.05)"/>
+    </svg>
+  </div>
+
+  <div class="facts-section sa sa-up" id="facts-section">
+    <div class="facts-header">
+      <div class="section-title" id="facts-title">✨ all the tea</div>
+      <div class="facts-count" id="facts-count">40 facts</div>
+    </div>
+    <div class="facts-grid" id="facts-grid"></div>
+  </div>
+
+  <div class="news-section hidden sa sa-up" id="news-section">
+    <div class="news-header">
+      <div class="section-title">📱 latest tea from the world</div>
+      <div class="live-badge"><div class="live-dot"></div> live</div>
+    </div>
+    <div class="news-grid" id="news-grid">
+      <div class="loading-msg">fetching the freshest tea bestie ✨ hold on...</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  made with ✨ brainrot energy ✨ for the pookies who stay educated<br>
+  facts are real · vibes are immaculate · news via hacker news · periodt 💅
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════
+   THEME
+═══════════════════════════════════════════ */
+function applyTheme(t) {
+  document.documentElement.setAttribute("data-theme", t);
+  localStorage.setItem("pk-theme", t);
+  document.querySelectorAll(".sw-dot").forEach(d =>
+    d.classList.toggle("active", d.dataset.theme === t)
+  );
+}
+// apply saved theme immediately before paint
+(function() { applyTheme(localStorage.getItem("pk-theme") || "pink"); })();
+
+/* ═══════════════════════════════════════════
+   DATA
+═══════════════════════════════════════════ */
+const FACTS = [
+  { cat:"world", emoji:"🌊",
+    text:"bestie did you know the Pacific Ocean is SO big it literally covers more than half the Earth's surface?? like the absolute AUDACITY of that body of water, it said 'I'll take the majority thanks' fr fr no cap" },
+  { cat:"world", emoji:"🐝",
+    text:"bees are keeping us alive and NOT in a dramatic way — they pollinate 1/3 of all food we eat. protect the bees or we are NOT eating and that is NOT giving main character energy. bees understood the assignment bestie" },
+  { cat:"world", emoji:"💧",
+    text:"only 3% of Earth's water is fresh water and most of THAT is frozen in glaciers. we be fighting over 0.3% of accessible water. we literally live in a simulation and I am not okay about it" },
+  { cat:"world", emoji:"🌋",
+    text:"Mount Everest is tall but NOT the closest point to space — that's Mount Chimborazo in Ecuador bc Earth bulges at the equator. science ate and left ZERO crumbs periodt" },
+  { cat:"world", emoji:"🦁",
+    text:"female lions do 90% of the hunting but the males eat FIRST. the audacity. lions been running a patriarchy for millennia and I have so many thoughts about this fr" },
+  { cat:"world", emoji:"🌿",
+    text:"the Amazon rainforest produces 20% of Earth's oxygen and trees literally communicate through underground fungal networks — they are TEXTING each other. mother nature said 'group chat? invented it'" },
+  { cat:"world", emoji:"🧲",
+    text:"Earth's magnetic north pole is MOVING toward Russia at 40 miles per year. the planet said 'location? it's complicated' and honestly same, I respect the commitment to chaos" },
+  { cat:"world", emoji:"🪸",
+    text:"the Great Barrier Reef is so big it's visible from SPACE and it's the largest living structure on Earth. giving main character energy and we really need to protect it fr" },
+  { cat:"world", emoji:"🐙",
+    text:"octopuses have THREE hearts, BLUE blood, and can edit their own RNA on the fly. they are literally the most unhinged creatures and they've been doing it way before humans thought science was cool" },
+  { cat:"world", emoji:"🍯",
+    text:"honey literally never expires — archaeologists found 3,000 year old honey in Egyptian tombs that was still edible. honey said 'expiration date? I don't know her' and that's the most powerful food fact ever" },
+  { cat:"history", emoji:"🏛️",
+    text:"Cleopatra lived closer in time to the Moon landing than to the building of the Great Pyramids. let that marinate bestie. we been miscalculating ancient history and I'm choosing chaos about this" },
+  { cat:"history", emoji:"👑",
+    text:"Napoleon was actually AVERAGE HEIGHT for his era (5'7\") and the whole 'short king' narrative was British war propaganda. we have been DECEIVED for 200 years and history class owes us an apology" },
+  { cat:"history", emoji:"📚",
+    text:"Oxford University is older than the Aztec Empire. they were already doing academic discourse while the Aztecs were still establishing their civilization. Oxford said 'vintage? we invented it'" },
+  { cat:"history", emoji:"🔬",
+    text:"Marie Curie was so radioactive that her 1890s notebooks are kept in lead-lined boxes and need protective gear to read. queen was LITERALLY giving radioactive slay and we need to discuss how iconic this is" },
+  { cat:"history", emoji:"🏃",
+    text:"the first Olympic Games in 776 BC — athletes competed completely NAKED. ancient Greeks really said 'dress code? we don't know her' and competed in the nude like it was nothing. unhinged behavior periodt" },
+  { cat:"history", emoji:"🐱",
+    text:"ancient Egyptians shaved their eyebrows when their cat died as a sign of mourning. cats have been main characters since literally forever and ancient Egypt understood the assignment way before us" },
+  { cat:"history", emoji:"⚔️",
+    text:"the Hundred Years' War between England and France lasted 116 YEARS. they couldn't even do basic math during their own beef. the historical drama of it all is sending me to the afterlife fr" },
+  { cat:"history", emoji:"🎶",
+    text:"Beethoven composed some of his greatest works while almost completely deaf. he literally could not hear his own music and still gave us absolute bangers. the main character energy is unprecedented" },
+  { cat:"history", emoji:"🔥",
+    text:"the Library of Alexandria burned multiple times and we lost CENTURIES of knowledge. we could've been so advanced bestie. this is still making me genuinely unwell and it happened 2000 years ago" },
+  { cat:"geography", emoji:"🦘",
+    text:"Australia has more venomous animals than ANYWHERE else on Earth and Australians just... vibe with it daily?? they wake up next to spiders that could delete you. unhinged main character behavior" },
+  { cat:"geography", emoji:"🇷🇺",
+    text:"Russia spans 11 TIME ZONES. E-L-E-V-E-N. while you're having breakfast in Moscow, someone in Vladivostok is going to sleep. Russia said 'timezone? yes, all of them' and geography had no choice" },
+  { cat:"geography", emoji:"🏜️",
+    text:"the Sahara Desert was a RAINFOREST with lakes and rivers just 5,000 years ago. ancient humans were literally chilling by water where there's now scorching sand. Earth did a complete villain arc" },
+  { cat:"geography", emoji:"🏔️",
+    text:"Canada has more lakes than ALL other countries combined. Canada quietly hoarded the world's freshwater and nobody talks about this enough. sneaky queen behavior and I respect the long game" },
+  { cat:"geography", emoji:"🌊",
+    text:"the Dead Sea is so salty you literally CANNOT sink in it — you just float there like a human pool noodle. nature said 'flotation device? I got you bestie' and built the Dead Sea. physics said slay" },
+  { cat:"geography", emoji:"🧊",
+    text:"Antarctica is technically the world's largest DESERT because deserts are defined by low precipitation, not temperature. the cold = not a desert thing was a lie we all believed and I'm choosing chaos" },
+  { cat:"geography", emoji:"🌺",
+    text:"Hawaii is moving toward Japan at 2.5 inches per year due to tectonic drift. in 50 million years Hawaii might fuse with Asia. geological drift said 'distance? temporary bestie'" },
+  { cat:"geography", emoji:"🗾",
+    text:"Japan has vending machines selling hot food, fresh flowers, umbrellas, crabs, and even CARS. Japan is literally living in 3026 while we're still arguing about what goes in vending machines" },
+  { cat:"geography", emoji:"🌍",
+    text:"Africa is SO big that you could fit the US, China, India, and most of Europe INSIDE it and still have room. our maps have been lying about continent sizes and that's the most map-pilled revelation" },
+  { cat:"geography", emoji:"🇳🇴",
+    text:"Norway has a town where it's literally illegal to die — if you're terminally ill you're flown out. the permafrost can't decompose bodies so they just said 'no dying allowed here' and I respect the chaos" },
+  { cat:"civics", emoji:"📜",
+    text:"the US Constitution is the OLDEST written national constitution still in use, serving timeless looks since 1787. the founding era understood that good documents slap forever and that's genuinely impressive" },
+  { cat:"civics", emoji:"🇮🇸",
+    text:"Iceland has the world's oldest parliament — the Althing, founded in 930 AD. they been doing democracy since before it was cool and that's the most lowkey main character move from a tiny island nation" },
+  { cat:"civics", emoji:"🗳️",
+    text:"in Belgium, voting is literally MANDATORY. you HAVE to vote or you get fined. Americans be like 'ugh voting is inconvenient' while Belgians are legally obligated and nobody talks about this energy difference" },
+  { cat:"civics", emoji:"🇳🇿",
+    text:"New Zealand was the FIRST country to give women the right to vote in 1893 — 27 years before the US. they were running a full feminist arc while everyone else was still debating it" },
+  { cat:"civics", emoji:"🏛️",
+    text:"the UN has 193 member countries out of 195 recognized nations. Vatican City really said 'international organizations? we don't do that here' and that's honestly a power move" },
+  { cat:"civics", emoji:"⚖️",
+    text:"the US Supreme Court has 9 justices because CONGRESS sets that number — it is NOT in the Constitution. that number could theoretically be changed by law and this information is doing damage to my brain" },
+  { cat:"civics", emoji:"🇮🇳",
+    text:"India is the world's largest democracy with 1.4 BILLION people and 900+ million eligible voters. India said 'democracy? we're gonna go big' and that scale is genuinely mind-blowing" },
+  { cat:"civics", emoji:"🌐",
+    text:"the EU has its own parliament, court, and currency used by 20 countries — it's basically a country that refuses to be called a country. the most complicated political situationship in modern history" },
+  { cat:"civics", emoji:"🇨🇭",
+    text:"Switzerland has held over 600 referendums since 1848 — citizens vote directly on laws constantly. they basically crowdsource their entire government and that's the most democratic behavior ever witnessed fr" },
+  { cat:"civics", emoji:"🌱",
+    text:"Ecuador and Bolivia have granted legal RIGHTS to nature itself in their constitutions. rivers and forests can be protected in court like a person. the planet said 'legal rights?' and two countries said 'slay'" },
+];
+
+const QUIZ = [
+  { q:"bestie which is the largest ocean on Earth? 🌊",
+    opts:["Atlantic Ocean","Pacific Ocean","Indian Ocean","Arctic Ocean"], ans:1,
+    exp:"the Pacific covers MORE than half the Earth's surface — it ate everyone's portion and felt zero remorse 💅" },
+  { q:"which country secretly hoards more lakes than any other? 🏔️",
+    opts:["Russia","United States","Canada","Brazil"], ans:2,
+    exp:"Canada has more lakes than ALL other countries combined. quietly collecting freshwater since forever — we respect the long game" },
+  { q:"which ancient civilization literally worshipped cats?? 🐱",
+    opts:["Ancient Greeks","Ancient Egyptians","Ancient Romans","Mesopotamians"], ans:1,
+    exp:"Egyptians were the OG cat girlies — they shaved their eyebrows when their cat died. legend behavior periodt" },
+  { q:"which country gave women the right to vote FIRST? 🗳️",
+    opts:["United States","United Kingdom","New Zealand","France"], ans:2,
+    exp:"New Zealand said 'women's rights' in 1893 — 27 years before the US. serving feminist queen behavior since the 1800s" },
+  { q:"the Sahara Desert used to be a... 🌿",
+    opts:["frozen tundra","lush rainforest","shallow ocean","volcanic wasteland"], ans:1,
+    exp:"5,000 years ago it was green and full of lakes. Earth did a full villain arc and we didn't get a say in it" },
+  { q:"how many time zones does Russia span? 🕐",
+    opts:["6 time zones","8 time zones","11 time zones","15 time zones"], ans:2,
+    exp:"ELEVEN. Russia said 'we'll take all of them thanks' and geography had no choice but to comply" },
+  { q:"Cleopatra's life was closer in time to which event? 📅",
+    opts:["The Moon landing (1969)","Building the pyramids (~2500 BC)","They're equally distant","Fall of Rome (476 AD)"], ans:0,
+    exp:"Cleopatra (69 BC) is closer to the Moon landing than to the pyramids. ancient history is NOT what we thought bestie" },
+  { q:"which country makes voting LEGALLY mandatory? 🗳️",
+    opts:["Netherlands","Sweden","Belgium","Denmark"], ans:2,
+    exp:"Belgium said civic duty is non-negotiable and honestly that's a whole political philosophy right there" },
+  { q:"Antarctica is technically classified as a... 🧊",
+    opts:["polar ice cap","tundra biome","desert","permafrost zone"], ans:2,
+    exp:"technically a desert because of low precipitation. the cold = not desert assumption was a lie we all lived with" },
+  { q:"what was Napoleon's actual height? 👑",
+    opts:["5'2\" (very short)","5'5\" (below avg)","5'7\" (average)","5'10\" (tall)"], ans:2,
+    exp:"5'7\" — average for his time. the short king thing was British propaganda and we believed it for 200 years. we been gaslit" },
+  { q:"which institution is OLDER than the Aztec Empire? 📚",
+    opts:["Harvard University","Oxford University","Cambridge University","Yale University"], ans:1,
+    exp:"Oxford was already doing academics while the Aztec Empire was being established. vintage doesn't even cover it" },
+  { q:"how many hearts does an octopus have? 🐙",
+    opts:["1 heart","2 hearts","3 hearts","4 hearts"], ans:2,
+    exp:"THREE hearts and blue blood. octopuses are completely unhinged creatures and they've always known it" },
+];
+
+const NEWS_VIBES = [
+  "this is giving breaking news energy fr 📰",
+  "bestie this affects all of us no cap 🌍",
+  "the world really said 'we're not done yet' huh 💅",
+  "this story is giving main character moment 🎬",
+  "lowkey important tea you need to know about 🍵",
+  "the audacity of this news story periodt 😤",
+  "this is so real and we should be talking about it 👀",
+  "staying educated era activated ✨",
+  "stay educated bestie this genuinely matters 🧠",
+  "girlies and boys this is important tea 🫖",
+  "not me learning about the world through a vibe check 🌐",
+];
+
+const TICKER_ITEMS = [
+  "✨ 96% of the ocean is still UNEXPLORED bestie 🌊",
+  "💅 honey never expires — 3,000yr old honey from Egypt still edible fr",
+  "🌟 a day on Venus is longer than a year on Venus — chaotic planet behavior",
+  "🔥 the Eiffel Tower grows 6 inches taller every summer due to heat periodt",
+  "💀 Cleopatra lived closer to the iPhone era than to the pyramids no cap",
+  "🌿 trees literally TEXT each other through underground fungal networks",
+  "✨ Oxford University is older than the Aztec Empire and that's sending me",
+  "🐙 octopuses have 3 hearts and blue blood — completely unhinged creatures",
+  "💫 more possible chess games exist than atoms in the observable universe bestie",
+  "🦁 female lions do 90% of hunting but males eat first — patriarchy started with lions fr",
+  "🧊 Antarctica is technically a desert because science said so bestie",
+  "🌺 Hawaii is drifting toward Japan at 2.5 inches per year — geology is slow but steady",
+  "📜 the US Bill of Rights took 2 years to ratify after the Constitution was written",
+  "🇮🇸 Iceland's parliament was founded in 930 AD — oldest in the world fr",
+  "🍯 a bee visits up to 5,000 flowers to make ONE tablespoon of honey — she is WORKING",
+  "🌊 the Pacific Ocean is wider than the Moon's diameter — big ocean energy",
+  "🐋 blue whale hearts are the size of a small car and audible from 2 miles away",
+  "⚡ lightning strikes Earth about 100 times per second and that's so unhinged",
+];
+
+const HEADER_EMOJIS = ["✨","💫","🌟","💅","🔥","💖","🌸","🦋","⭐","🌈","💜","🩷","🪄","🌙"];
+const ACHIEVEMENTS = [
+  { trigger:1,  msg:"first quiz answered! big brain era begins 🧠" },
+  { trigger:3,  msg:"3 in a row! you're literally so educated bestie ✨" },
+  { trigger:5,  msg:"5 streak!! you understood the assignment 💅" },
+  { trigger:10, msg:"10 STREAK!! you are literally a genius no cap 🌟" },
+];
+
+/* ═══════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════ */
+let currentCat   = "all";
+let quizIndex    = 0;
+let quizScore    = 0;
+let quizTotal    = 0;
+let quizStreak   = 0;
+let quizAnswered = false;
+let xp           = 0;
+const likes      = {};
+
+/* ═══════════════════════════════════════════
+   SCROLL ANIMATIONS — fully JS-driven
+   Inline styles have the highest specificity so
+   nothing in the CSS cascade can interfere.
+═══════════════════════════════════════════ */
+const REVEAL_EASE = "cubic-bezier(0.22,1,0.36,1)";
+
+function revealEl(el) {
+  const delay = parseFloat(el.dataset.delay || "0") * 1000;
+  setTimeout(() => {
+    // 1. Apply the transition BEFORE changing values
+    el.style.transition = `opacity 0.62s ${REVEAL_EASE}, transform 0.62s ${REVEAL_EASE}`;
+    // 2. Force a reflow so the browser registers the initial state + transition
+    void el.offsetHeight;
+    // 3. Change to final visible state — browser will animate the diff
+    el.style.opacity   = "1";
+    el.style.transform = "none";
+    // 4. After animation finishes, hand control back to CSS
+    setTimeout(() => {
+      el.style.transition = "";
+      el.style.opacity    = "";
+      el.style.transform  = "";
+      el.classList.add("sa-done");
+      el.classList.remove("sa", "sa-up", "sa-left", "sa-right", "sa-scale");
+    }, 700);
+  }, delay);
+}
+
+const scrollObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    revealEl(e.target);
+    scrollObs.unobserve(e.target);
+  });
+}, { threshold: 0.06 });
+
+function setupScrollAnims() {
+  document.querySelectorAll(".sa").forEach(el => scrollObs.observe(el));
+}
+
+/* ═══════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════ */
+function init() {
+  setupCursor();
+  spawnParticles();
+  buildHeaderEmojis();
+  buildTicker();
+  randomFeatured();
+  renderFacts("all");
+  renderQuiz();
+  fetchNews();
+  setupScrollAnims();
+
+  document.querySelectorAll(".sw-dot").forEach(d =>
+    d.addEventListener("click", () => applyTheme(d.dataset.theme))
+  );
+
+  document.querySelectorAll(".cat-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentCat = btn.dataset.cat;
+      switchCat(currentCat);
+    });
+  });
+}
+
+function switchCat(cat) {
+  const featEl  = document.getElementById("featured-section");
+  const quizEl  = document.getElementById("quiz-section");
+  const factsEl = document.getElementById("facts-section");
+  const newsEl  = document.getElementById("news-section");
+
+  if (cat === "news") {
+    featEl.classList.add("hidden");
+    quizEl.classList.add("hidden");
+    factsEl.classList.add("hidden");
+    newsEl.classList.remove("hidden");
+    document.querySelectorAll(".news-card.sa:not(.sa-done)").forEach(el => scrollObs.observe(el));
+  } else {
+    featEl.classList.remove("hidden");
+    quizEl.classList.remove("hidden");
+    factsEl.classList.remove("hidden");
+    newsEl.classList.add("hidden");
+    randomFeatured();
+    renderFacts(cat);
+    [featEl, quizEl, factsEl].forEach(el => {
+      if (!el.classList.contains("sa-done")) scrollObs.observe(el);
+    });
+    const titles = {
+      all:       "✨ all the tea",
+      world:     "🌍 world facts, no cap",
+      history:   "📜 history slay era",
+      geography: "🗺️ geography bestie moments",
+      civics:    "🏛️ civics? understood the assignment",
+    };
+    document.getElementById("facts-title").textContent = titles[cat] || "✨ all the tea";
+  }
+}
+
+/* ═══════════════════════════════════════════
+   CURSOR — cute animated cursor with sparkle trail
+═══════════════════════════════════════════ */
+const SPARK_POOLS = {
+  pink:   ["🌸","💖","🩷","💗","🌺","🎀","💝","🫧","✨","💓","🦋","🌷"],
+  blue:   ["💙","❄️","💎","🌊","💠","🫧","🔷","⭐","🌀","🫐","🧊","💫"],
+  black:  ["⭐","✨","💫","🌟","👑","🔥","⚡","🪄","💛","🌙","🗝️","💎"],
+  yellow: ["🌻","💛","☀️","🌟","🍋","🌼","✨","💫","🎇","⭐","🌞","🍯"],
+};
+function getSparkPool() {
+  return SPARK_POOLS[document.documentElement.getAttribute("data-theme")] || SPARK_POOLS.pink;
+}
+const HOVER_TARGETS = "button,a,[onclick],.fact-card,.sw-dot,.quiz-opt,.icon-btn,.cat-btn,.news-card";
+
+function setupCursor() {
+  const dot  = document.getElementById("cur-dot");
+  const ring = document.getElementById("cur-ring");
+  const glow = document.getElementById("cur-glow");
+
+  let mx = 0, my = 0;    // precise mouse
+  let rx = 0, ry = 0;    // ring (lagged)
+  let gx = 0, gy = 0;    // glow (slower lag)
+  let lastSpark = 0;
+  let moving = false, moveTimer;
+
+  document.addEventListener("mousemove", e => {
+    mx = e.clientX; my = e.clientY;
+
+    // dot follows instantly
+    dot.style.left = mx + "px";
+    dot.style.top  = my + "px";
+
+    // sparkle trail — throttled
+    const now = Date.now();
+    if (now - lastSpark > 55) {
+      lastSpark = now;
+      spawnSpark(mx, my, false);
+    }
+
+    // mark as moving (ring speeds up while moving)
+    moving = true;
+    clearTimeout(moveTimer);
+    moveTimer = setTimeout(() => { moving = false; }, 120);
+  });
+
+  // smooth ring + glow follow via RAF
+  (function animLoop() {
+    const ease = moving ? 0.16 : 0.08;
+    rx += (mx - rx) * ease;
+    ry += (my - ry) * ease;
+    gx += (mx - gx) * 0.05;
+    gy += (my - gy) * 0.05;
+    ring.style.left = rx + "px";
+    ring.style.top  = ry + "px";
+    glow.style.left = gx + "px";
+    glow.style.top  = gy + "px";
+    requestAnimationFrame(animLoop);
+  })();
+
+  // hover detection
+  document.addEventListener("mouseover", e => {
+    if (e.target.closest(HOVER_TARGETS)) document.body.classList.add("cur-hover");
+  });
+  document.addEventListener("mouseout", e => {
+    if (e.target.closest(HOVER_TARGETS)) document.body.classList.remove("cur-hover");
+  });
+
+  // click burst
+  document.addEventListener("mousedown", () => {
+    document.body.classList.add("cur-click");
+    for (let i = 0; i < 10; i++) setTimeout(() => spawnSpark(mx, my, true), i * 28);
+  });
+  document.addEventListener("mouseup", () => {
+    setTimeout(() => document.body.classList.remove("cur-click"), 280);
+  });
+}
+
+function spawnSpark(x, y, burst) {
+  const el  = document.createElement("span");
+  el.className = "cur-spark";
+  const pool = getSparkPool();
+  el.textContent = pool[Math.floor(Math.random() * pool.length)];
+
+  const spread  = burst ? 55 : 14;
+  const riseMin = burst ? 30 : 18;
+  const riseRng = burst ? 55 : 30;
+  const dur     = (burst ? 0.55 : 0.65) + Math.random() * 0.3;
+  const size    = burst ? 0.85 + Math.random() * 0.55 : 0.5 + Math.random() * 0.45;
+
+  el.style.left     = (x + (Math.random() - 0.5) * (burst ? 20 : 10)) + "px";
+  el.style.top      = (y + (Math.random() - 0.5) * (burst ? 20 : 10)) + "px";
+  el.style.fontSize = size + "rem";
+  el.style.setProperty("--dx", ((Math.random() - 0.5) * spread * 2) + "px");
+  el.style.setProperty("--dy", (-(riseMin + Math.random() * riseRng)) + "px");
+  el.style.setProperty("--dr", ((Math.random() - 0.5) * 280) + "deg");
+  el.style.setProperty("--sd", dur + "s");
+
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), dur * 1000 + 50);
+}
+
+/* ═══════════════════════════════════════════
+   PARTICLES
+═══════════════════════════════════════════ */
+function spawnParticles() {
+  const pool = ["✨","💫","🌟","💅","🔥","💖","🌸","🦋","⭐","🌈","💜","🩷","🪄","🌙","🫧"];
+  const wrap = document.getElementById("particles");
+  for (let i = 0; i < 25; i++) {
+    const el = document.createElement("div");
+    el.className = "particle";
+    el.textContent = pool[i % pool.length];
+    el.style.left              = Math.random() * 100 + "vw";
+    el.style.animationDuration = (20 + Math.random() * 30) + "s";
+    el.style.animationDelay    = (Math.random() * 30) + "s";
+    el.style.fontSize           = (0.9 + Math.random() * 1.4) + "rem";
+    wrap.appendChild(el);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   HEADER EMOJIS
+═══════════════════════════════════════════ */
+function buildHeaderEmojis() {
+  const wrap = document.getElementById("header-emojis");
+  const pos  = [[5,20],[12,70],[20,45],[80,15],[88,65],[95,40],[35,85],[65,90],[50,5],[25,10],[75,8]];
+  pos.forEach(([l, t], i) => {
+    const el = document.createElement("span");
+    el.className = "h-emoji";
+    el.textContent = HEADER_EMOJIS[i % HEADER_EMOJIS.length];
+    el.style.left              = l + "%";
+    el.style.top               = t + "%";
+    el.style.animationDuration = (3 + Math.random() * 3) + "s";
+    el.style.animationDelay    = (Math.random() * 3) + "s";
+    el.style.fontSize           = (1.2 + Math.random() * 1) + "rem";
+    el.style.opacity            = "0.5";
+    wrap.appendChild(el);
+  });
+}
+
+/* ═══════════════════════════════════════════
+   TICKER
+═══════════════════════════════════════════ */
+function buildTicker() {
+  const track = document.getElementById("ticker-track");
+  const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
+  track.innerHTML = items.map(t => `<span class="ticker-item">${t}</span>`).join("");
+}
+
+/* ═══════════════════════════════════════════
+   FEATURED
+═══════════════════════════════════════════ */
+function randomFeatured() {
+  const pool = currentCat === "all" ? FACTS : FACTS.filter(f => f.cat === currentCat);
+  const f    = pool[Math.floor(Math.random() * pool.length)];
+  const emoEl = document.getElementById("feat-emoji");
+  emoEl.style.animation = "none";
+  void emoEl.offsetHeight;
+  emoEl.style.animation = "";
+  emoEl.textContent = f.emoji;
+  document.getElementById("feat-text").textContent = f.text;
+  document.getElementById("feat-cat").textContent  = "# " + f.cat + " era";
+  gainXP(2);
+}
+window.randomFeatured = randomFeatured;
+
+function shareFeat() {
+  const text = document.getElementById("feat-text").textContent;
+  navigator.clipboard.writeText(text)
+    .then(() => showToast("copied bestie ✅"))
+    .catch(() => showToast("couldn't copy rn 😩"));
+}
+window.shareFeat = shareFeat;
+
+/* ═══════════════════════════════════════════
+   FACTS GRID
+═══════════════════════════════════════════ */
+function renderFacts(cat) {
+  const pool = cat === "all" ? FACTS : FACTS.filter(f => f.cat === cat);
+  document.getElementById("facts-count").textContent = pool.length + " facts";
+
+  document.getElementById("facts-grid").innerHTML = pool.map((f, i) => {
+    const isNew  = i < 3;
+    const baseL  = 80 + Math.floor(Math.random() * 120);
+    const likeC  = likes[i] || baseL;
+    const delay  = Math.min(i * 0.055, 0.5);
+    return `
+      <div class="fact-card sa" data-cat="${f.cat}" data-idx="${i}" data-delay="${delay}">
+        <div class="fc-top">
+          <span class="fc-emoji">${f.emoji}</span>
+          ${isNew ? '<span class="fc-new-badge">NEW</span>' : ""}
+        </div>
+        <p class="fc-text">${f.text}</p>
+        <div class="fc-footer">
+          <span class="fc-tag tag-${f.cat}">#${f.cat}</span>
+          <div class="fc-actions">
+            <span class="like-count" id="lc-${i}">${likeC}</span>
+            <button class="icon-btn ${likes[i] ? "liked" : ""}" id="lb-${i}"
+              onclick="toggleLike(${i}, ${baseL})" title="vibe with this fact">
+              ${likes[i] ? "🩷" : "🤍"}
+            </button>
+            <button class="icon-btn" onclick="copyFact('${escJs(f.text)}')" title="copy this tea">
+              📋
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  document.querySelectorAll(".fact-card.sa:not(.sa-done)").forEach(el => scrollObs.observe(el));
+}
+
+function toggleLike(idx, base) {
+  likes[idx] = !likes[idx];
+  const btn = document.getElementById("lb-" + idx);
+  const cnt = document.getElementById("lc-" + idx);
+  if (likes[idx]) {
+    btn.textContent = "🩷"; btn.classList.add("liked");
+    cnt.textContent = (base + 1).toString(); gainXP(5);
+  } else {
+    btn.textContent = "🤍"; btn.classList.remove("liked");
+    cnt.textContent = base.toString();
+  }
+}
+window.toggleLike = toggleLike;
+
+function copyFact(text) {
+  navigator.clipboard.writeText(text).then(() => showToast("copied bestie ✅")).catch(() => {});
+}
+window.copyFact = copyFact;
+
+function escJs(str) {
+  return str.replace(/'/g, "\\'").replace(/"/g, "&quot;");
+}
+
+/* ═══════════════════════════════════════════
+   QUIZ
+═══════════════════════════════════════════ */
+function renderQuiz() {
+  quizAnswered = false;
+  const q = QUIZ[quizIndex % QUIZ.length];
+  const LETTERS = ["A","B","C","D"];
+
+  document.getElementById("q-dots").innerHTML =
+    QUIZ.map((_, i) => {
+      const cls = i < quizIndex % QUIZ.length ? "done"
+                : i === quizIndex % QUIZ.length ? "current" : "";
+      return `<div class="q-dot ${cls}"></div>`;
+    }).join("");
+
+  document.getElementById("quiz-q").textContent = q.q;
+  document.getElementById("quiz-result").textContent = "";
+  document.getElementById("quiz-result").style.color = "";
+  document.getElementById("next-btn").classList.add("hidden");
+
+  document.getElementById("quiz-opts").innerHTML = q.opts.map((opt, i) => `
+    <button class="quiz-opt" onclick="answerQuiz(${i})">
+      <span class="opt-letter">${LETTERS[i]}</span>
+      ${opt}
+    </button>
+  `).join("");
+}
+
+function answerQuiz(selected) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+  quizTotal++;
+  const q    = QUIZ[quizIndex % QUIZ.length];
+  const opts = document.querySelectorAll(".quiz-opt");
+  opts.forEach(o => o.disabled = true);
+  opts[q.ans].classList.add("correct");
+
+  if (selected === q.ans) {
+    quizScore++; quizStreak++;
+    document.getElementById("quiz-result").textContent = "✅ SLAY you ate that!! " + q.exp;
+    document.getElementById("quiz-result").style.color = "var(--correct)";
+    launchConfetti(); gainXP(20); checkAchievement(quizStreak);
+  } else {
+    quizStreak = 0;
+    opts[selected].classList.add("wrong");
+    document.getElementById("quiz-result").textContent = "❌ not it bestie, but now you know! " + q.exp;
+    document.getElementById("quiz-result").style.color = "var(--wrong)";
+    gainXP(5);
+  }
+
+  const sb = document.getElementById("streak-badge");
+  sb.textContent = "🔥 " + quizStreak + " streak";
+  sb.classList.toggle("hot", quizStreak >= 3);
+  document.getElementById("q-score").textContent = quizScore;
+  document.getElementById("q-total").textContent = quizTotal;
+  document.getElementById("next-btn").classList.remove("hidden");
+}
+window.answerQuiz = answerQuiz;
+
+function nextQuiz() { quizIndex++; renderQuiz(); }
+window.nextQuiz = nextQuiz;
+
+/* ═══════════════════════════════════════════
+   XP
+═══════════════════════════════════════════ */
+function gainXP(amount) {
+  xp += amount;
+  const pct = Math.min((xp / 300) * 100, 100);
+  document.getElementById("xp-fill").style.width = pct + "%";
+  document.getElementById("xp-val").textContent  = xp + " xp";
+}
+
+/* ═══════════════════════════════════════════
+   ACHIEVEMENTS
+═══════════════════════════════════════════ */
+function checkAchievement(streak) {
+  const ach = ACHIEVEMENTS.find(a => a.trigger === streak);
+  if (!ach) return;
+  const el = document.getElementById("achievement");
+  document.getElementById("ach-body").textContent = ach.msg;
+  el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 3500);
+}
+
+/* ═══════════════════════════════════════════
+   CONFETTI
+═══════════════════════════════════════════ */
+function launchConfetti() {
+  const canvas = document.getElementById("confetti-canvas");
+  const ctx    = canvas.getContext("2d");
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const style   = getComputedStyle(document.documentElement);
+  const a       = style.getPropertyValue("--accent").trim()  || "#db2777";
+  const a2      = style.getPropertyValue("--accent2").trim() || "#f472b6";
+  const a3      = style.getPropertyValue("--accent3").trim() || "#fbcfe8";
+  const colors  = [a, a2, a3, "#22c55e", "#f59e0b", "#fff"];
+  const pieces  = Array.from({length: 120}, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height * 0.5 - canvas.height * 0.5,
+    w: 4 + Math.random() * 8, h: 3 + Math.random() * 5,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    vy: 2 + Math.random() * 4, vx: (Math.random() - 0.5) * 4,
+    rot: Math.random() * 360, rotV: (Math.random() - 0.5) * 8, opacity: 1,
+  }));
+  let frame = 0;
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    pieces.forEach(p => {
+      p.y += p.vy; p.x += p.vx; p.rot += p.rotV;
+      if (frame > 80) p.opacity -= 0.02;
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, p.opacity);
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot * Math.PI / 180);
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.roundRect(-p.w/2, -p.h/2, p.w, p.h, 2);
+      ctx.fill();
+      ctx.restore();
+    });
+    frame++;
+    if (frame < 140) requestAnimationFrame(draw);
+    else ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+  draw();
+}
+
+/* ═══════════════════════════════════════════
+   NEWS
+═══════════════════════════════════════════ */
+async function fetchNews() {
+  const grid = document.getElementById("news-grid");
+  try {
+    const idsRes = await fetch("https://hacker-news.firebaseio.com/v0/topstories.json");
+    const ids    = await idsRes.json();
+    const stories = await Promise.all(
+      ids.slice(0, 20).map(id =>
+        fetch("https://hacker-news.firebaseio.com/v0/item/" + id + ".json").then(r => r.json())
+      )
+    );
+    const valid = stories.filter(s => s && s.title && s.type === "story");
+    if (!valid.length) {
+      grid.innerHTML = '<div class="loading-msg">the tea is not loading rn bestie 😩 try refreshing</div>';
+      return;
+    }
+    grid.innerHTML = valid.map((s, i) => {
+      const vibe  = NEWS_VIBES[Math.floor(Math.random() * NEWS_VIBES.length)];
+      const url   = s.url || "https://news.ycombinator.com/item?id=" + s.id;
+      const ago   = timeAgo(s.time);
+      const hot   = s.score > 200;
+      const delay = Math.min(i * 0.07, 0.6);
+      return `
+        <a href="${escHtml(url)}" target="_blank" rel="noopener noreferrer"
+           class="news-card sa" data-delay="${delay}">
+          <div class="news-headline">${escHtml(s.title)}</div>
+          <div class="news-vibe">${vibe}</div>
+          <div class="news-meta">
+            <span class="news-score ${hot ? "trending" : ""}">
+              ${hot ? "🔥" : "⬆️"} ${s.score || 0}${hot ? " HOT" : ""}
+            </span>
+            <span class="news-comments">💬 ${s.descendants || 0}</span>
+            <span class="news-time">${ago}</span>
+          </div>
+        </a>
+      `;
+    }).join("");
+    document.querySelectorAll(".news-card.sa:not(.sa-done)").forEach(el => scrollObs.observe(el));
+  } catch (_) {
+    grid.innerHTML = '<div class="loading-msg">news api not cooperating rn 😩 refresh and manifest harder bestie</div>';
+  }
+}
+
+/* ═══════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════ */
+function showToast(msg) {
+  const el = document.getElementById("copy-toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 2200);
+}
+
+/* ═══════════════════════════════════════════
+   UTILS
+═══════════════════════════════════════════ */
+function timeAgo(ts) {
+  const s = Math.floor(Date.now() / 1000 - ts);
+  if (s < 3600)  return Math.floor(s / 60) + "m ago";
+  if (s < 86400) return Math.floor(s / 3600) + "h ago";
+  return Math.floor(s / 86400) + "d ago";
+}
+function escHtml(str) {
+  return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+window.addEventListener("DOMContentLoaded", init);
+</script>
+</body>
+</html>
