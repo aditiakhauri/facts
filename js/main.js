@@ -7,6 +7,8 @@ import { randomFeatured, initFeatured } from './featured.js';
 import { renderQuiz, initQuiz }         from './quiz.js';
 import { renderFacts, initFacts }       from './facts.js';
 import { fetchNews }           from './news.js';
+import { fetchAstroNews }      from './astro-news.js';
+import { globalVoiceToggle }   from './global-voice.js';
 import { state }               from './state.js';
 
 function switchCat(cat) {
@@ -16,18 +18,29 @@ function switchCat(cat) {
   const quizEl  = document.getElementById('quiz-section');
   const factsEl = document.getElementById('facts-section');
   const newsEl  = document.getElementById('news-section');
+  const astroEl = document.getElementById('astro-section');
 
   if (cat === 'news') {
     featEl.classList.add('hidden');
     quizEl.classList.add('hidden');
     factsEl.classList.add('hidden');
     newsEl.classList.remove('hidden');
+    astroEl.classList.add('hidden');
     document.querySelectorAll('.news-card.sa:not(.sa-done)').forEach(el => scrollObs.observe(el));
+  } else if (cat === 'astro') {
+    featEl.classList.add('hidden');
+    quizEl.classList.add('hidden');
+    factsEl.classList.add('hidden');
+    newsEl.classList.add('hidden');
+    astroEl.classList.remove('hidden');
+    fetchAstroNews();
+    document.querySelectorAll('.astro-card.sa:not(.sa-done)').forEach(el => scrollObs.observe(el));
   } else {
     featEl.classList.remove('hidden');
     quizEl.classList.remove('hidden');
     factsEl.classList.remove('hidden');
     newsEl.classList.add('hidden');
+    astroEl.classList.add('hidden');
     randomFeatured();
     renderFacts(cat);
     [featEl, quizEl, factsEl].forEach(el => {
@@ -58,6 +71,8 @@ function init() {
   renderQuiz();
   fetchNews();
   setupScrollAnims();
+
+  document.getElementById('global-voice-btn').addEventListener('click', globalVoiceToggle);
 
   document.querySelectorAll('.cat-btn').forEach(btn => {
     btn.addEventListener('click', () => {

@@ -61,12 +61,14 @@ function answerQuiz(selected) {
     launchConfetti();
     gainXP(20);
     checkAchievement(state.quizStreak);
+    document.dispatchEvent(new CustomEvent('quiz-answered', { detail: { correct: true } }));
   } else {
     state.quizStreak = 0;
     opts[selected].classList.add('wrong');
     resultEl.textContent = '❌ not it bestie, but now you know! ' + q.exp;
     resultEl.style.color = 'var(--wrong)';
     gainXP(5);
+    document.dispatchEvent(new CustomEvent('quiz-answered', { detail: { correct: false } }));
   }
 
   const sb = document.getElementById('streak-badge');

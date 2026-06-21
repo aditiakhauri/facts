@@ -1,5 +1,6 @@
-import { state }     from './state.js';
-import { showToast } from './utils.js';
+import { state }           from './state.js';
+import { showToast }       from './utils.js';
+import { stopGlobalVoice } from './global-voice.js';
 
 // check once on load whether the server already has a key (e.g. from .env)
 let keyConfigured = false;
@@ -92,6 +93,7 @@ export function resetVoiceBtn(btn, isFeatured) {
 }
 
 export async function playVoice(text, btn, isFeatured = false) {
+  stopGlobalVoice();
   const ready = await ensureKey();
   if (!ready) return;
 
